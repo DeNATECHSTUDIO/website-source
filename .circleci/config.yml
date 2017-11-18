@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.8
+    working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
+    steps:
+      - checkout
+      - run: git submodule update --init --recursive
+      - run: go get -v -d github.com/spf13/hugo
+      - run: hugo
+      - run: cd DeNATECHSTUDIO.github.io && git add -A
+      - run: cd DeNATECHSTUDIO.github.io && git commit -m 'Publish by CircleCI'
+      - run: cd DeNATECHSTUDIO.github.io && git push origin master
