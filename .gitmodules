@@ -1,3 +1,6 @@
 [submodule "DeNATECHSTUDIO.github.io"]
 	path = DeNATECHSTUDIO.github.io
 	url = git@github.com:DeNATECHSTUDIO/DeNATECHSTUDIO.github.io.git
+[submodule "themes/ananke"]
+	path = themes/ananke
+	url = https://github.com/budparr/gohugo-theme-ananke.git
