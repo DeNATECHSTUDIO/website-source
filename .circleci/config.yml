@@ -3,11 +3,15 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.8
-    working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
       - checkout
+      # install theme
       - run: git submodule update --init --recursive
-      - run: go get -v -d github.com/spf13/hugo
+      # install hugo
+      - run: go get github.com/kardianos/govendor
+      - run: govendor get github.com/gohugoio/hugo
+      - run: go install github.com/gohugoio/hugo
+      # install publish
       - run: hugo
       - run: cd DeNATECHSTUDIO.github.io && git add -A
       - run: cd DeNATECHSTUDIO.github.io && git commit -m 'Publish by CircleCI'
