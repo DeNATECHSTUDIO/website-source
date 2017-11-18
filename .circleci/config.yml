@@ -11,7 +11,9 @@ jobs:
       - run: go get github.com/kardianos/govendor
       - run: govendor get github.com/gohugoio/hugo
       - run: go install github.com/gohugoio/hugo
-      # install publish
+      # publish
+      - run: git config --global user.email "circleci@example.com"
+      - run: git config --global user.name "CircleCI"
       - run: mkdir -p content
       - run: hugo
       - run: cd DeNATECHSTUDIO.github.io && git add -A
