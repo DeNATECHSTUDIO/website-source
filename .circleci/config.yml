@@ -12,6 +12,7 @@ jobs:
       - run: govendor get github.com/gohugoio/hugo
       - run: go install github.com/gohugoio/hugo
       # install publish
+      - run: mkdir -p content
       - run: hugo
       - run: cd DeNATECHSTUDIO.github.io && git add -A
       - run: cd DeNATECHSTUDIO.github.io && git commit -m 'Publish by CircleCI'
